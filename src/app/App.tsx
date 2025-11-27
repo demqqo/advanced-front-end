@@ -1,12 +1,11 @@
 import React, { Suspense, useContext, useState } from 'react'
-import Counter from './components/Counter'
 import './styles/index.scss'
 import { Link, Route, Routes } from 'react-router-dom'
-import {AboutPageAsync} from './pages/AboutPage/AboutPage.async'
-import {MainPageAsync} from './pages/MainPage/MainPage.async'
-import Loading from './components/Loading'
-import { useTheme } from './theme/useTheme'
-import { classNames } from './helpers/classNames'
+import {classNames} from 'shared/lib'
+import { useTheme } from './providers'
+import {AboutPage} from 'pages/AboutPage'
+import {MainPage} from 'pages/MainPage'
+
 
 
 
@@ -20,14 +19,13 @@ export const App = () => {
           <Link to={'/'}>Main</Link>
           <Link to={'/about'}>About</Link>
           
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={"123"}>
               <Routes>
-                <Route path={'/about'} element={<AboutPageAsync/>}> </Route>
-                <Route path={'/'} element={<MainPageAsync/>}> </Route>
+                <Route path={'/about'} element={<AboutPage/>}> </Route>
+                <Route path={'/'} element={<MainPage/>}> </Route>
               </ Routes>
             </ Suspense>
           </div>
-        <Counter />
     </div>
   )
 }
